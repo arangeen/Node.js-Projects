@@ -3,17 +3,14 @@ const getNotes = require("./notes.js");
 
 // load in the library chalk
 const chalk = require("chalk");
-// now we can use funciton
-const message = getNotes();
 
-console.log(message);
+// print all arguments
+// console.log(process.argv);
 
-console.log(chalk.bold.green("Success!"));
+const command = process.argv[2];
 
-/* 
-    Challenge: Use the Chalk library in your project
-        - install version 2.4.1 of chalk 
-        - load chalk into app.js
-        - use it to print the string "success!" to the console in green 
-        - test it 
-*/
+if (command === "add") {
+  console.log("Adding note!");
+} else if (command === "remove") {
+  console.log("removing note!");
+}
