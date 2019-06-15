@@ -6,6 +6,8 @@ const fs = require("fs");
 // };
 
 // const bookJSON = JSON.stringify(book);
+
+// saving the json data inside that file. created by itself if it doesnt exist
 // fs.writeFileSync("1-json.json", bookJSON);
 
 // const dataBuffer = fs.readFileSync("1-json.json");

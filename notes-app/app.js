@@ -1,8 +1,8 @@
-// use require to load in the function from notes.js
-const getNotes = require("./notes.js");
 const yargs = require("yargs");
 // load in the library chalk
 const chalk = require("chalk");
+// use require to load in the functions from notes.js
+const notes = require("./notes.js");
 
 // customize yargs version
 yargs.version("1.1.0");
@@ -26,8 +26,7 @@ yargs.command({
     }
   },
   handler: function(argv) {
-    console.log("Title: " + argv.title);
-    console.log("Body: " + argv.body);
+    notes.addNote(argv.title, argv.body);
   }
 });
 
