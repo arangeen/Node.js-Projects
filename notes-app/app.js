@@ -5,9 +5,11 @@ const chalk = require("chalk");
 const notes = require("./notes.js");
 
 /**
- *  Challenge: Refactor all functions
- *    1. if function is a method, use ES6 method definition syntax
- *    2. otherwise, use most concise arrow function possible
+ *  Challenge: wire up list command
+ *    1. create and export listNotes from notes.js
+ *        -"Your notes" using chalk
+ *        - print note title for each note
+ *    2. call listNotes form command handler
  *    3. test work
  */
 
@@ -59,7 +61,7 @@ yargs.command({
   command: "list",
   describe: "list your notes",
   handler() {
-    console.log("Listing out all your notes!");
+    notes.listNotes();
   }
 });
 
