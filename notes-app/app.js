@@ -5,11 +5,9 @@ const chalk = require("chalk");
 const notes = require("./notes.js");
 
 /**
- *  Challenge: Wire up removeNote
- *    1. load existing notes
- *    2. use array filter method to remove the matching note (if any)
- *    3. save the newly created array
- *    4. test work with title that exist and title that doesnt
+ *  Challenge: Use chalk to provide useful logs for remove
+ *    1. if a note is removed, print "Note renoved" with a green background
+ *    2. if not, print "No note found" with red bg
  */
 
 // customize yargs version
