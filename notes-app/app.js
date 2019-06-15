@@ -5,9 +5,10 @@ const chalk = require("chalk");
 const notes = require("./notes.js");
 
 /**
- *  Challenge: Use chalk to provide useful logs for remove
- *    1. if a note is removed, print "Note renoved" with a green background
- *    2. if not, print "No note found" with red bg
+ *  Challenge: Refactor all functions
+ *    1. if function is a method, use ES6 method definition syntax
+ *    2. otherwise, use most concise arrow function possible
+ *    3. test work
  */
 
 // customize yargs version
@@ -31,7 +32,8 @@ yargs.command({
       type: "string"
     }
   },
-  handler: function(argv) {
+  //change to ES5 syntax
+  handler(argv) {
     notes.addNote(argv.title, argv.body);
   }
 });
@@ -47,7 +49,7 @@ yargs.command({
       type: "string"
     }
   },
-  handler: function(argv) {
+  handler(argv) {
     notes.removeNote(argv.title);
   }
 });
@@ -56,7 +58,7 @@ yargs.command({
 yargs.command({
   command: "list",
   describe: "list your notes",
-  handler: function() {
+  handler() {
     console.log("Listing out all your notes!");
   }
 });
@@ -65,7 +67,7 @@ yargs.command({
 yargs.command({
   command: "read",
   describe: "Read your note",
-  handler: function() {
+  handler() {
     console.log("Reading a note");
   }
 });
