@@ -25,6 +25,11 @@ const addNote = function(title, body) {
   }
 };
 
+//   2. create and export a removeNote function from notes.js
+const removeNote = function(title) {
+  console.log(title);
+};
+
 const saveNotes = function(notes) {
   const dataJSON = JSON.stringify(notes);
   fs.writeFileSync("notes.json", dataJSON);
@@ -46,5 +51,6 @@ const loadNotes = function() {
 // export multiple function
 module.exports = {
   getNotes: getNotes,
-  addNote: addNote
+  addNote: addNote,
+  removeNote: removeNote
 };
