@@ -1,6 +1,17 @@
 const fs = require("fs");
 const chalk = require("chalk");
-// define function
+
+/**
+ * Goal: Wire up read command
+ *  1. Setup --title option for read command
+ *  2. create readNote in notes.js
+ *        - search for note by title
+ *        - find note and print title (styled) and body (plain)
+ *        - No note found? print error in red.
+ *  3. have the command handler call the function
+ *  4. test your work by running a couple commands
+ */
+
 const getNotes = () => {
   return "Ahmad Notes...";
 };
@@ -8,10 +19,9 @@ const getNotes = () => {
 const addNote = (title, body) => {
   const notes = loadNotes();
 
-  // store all duplicate titles in here
-  const duplicateNotes = notes.filter(note => note.title === title);
+  const duplicateNote = notes.find(note => note.title === title);
 
-  if (duplicateNotes.length === 0) {
+  if (!duplicateNote) {
     notes.push({
       title: title,
       body: body
@@ -47,6 +57,19 @@ const listNotes = () => {
   });
 };
 
+//step 2
+const readNote = title => {
+  const notes = loadNotes();
+  const note = notes.find(note => note.title === title);
+
+  if (note) {
+    console.log(chalk.inverse(note.title));
+    console.log(note.body);
+  } else {
+    console.log(chalk.red.inverse("Note not found"));
+  }
+};
+
 const saveNotes = notes => {
   const dataJSON = JSON.stringify(notes);
   fs.writeFileSync("notes.json", dataJSON);
@@ -70,5 +93,6 @@ module.exports = {
   getNotes: getNotes,
   addNote: addNote,
   removeNote: removeNote,
-  listNotes: listNotes
+  listNotes: listNotes,
+  readNote: readNote
 };
