@@ -1,13 +1,14 @@
 const request = require("request");
 
 const url =
-  "https://api.darksky.net/forecast/45c8fd671c3c1dbd4b83dcc55bc51803/37.8267,-122.4233";
+  "https://api.darksky.net/forecast/45c8fd671c3c1dbd4b83dcc55bc51803/37.8267,-122.4233?units=si&lang=es";
 
 // setting json to true is saying we would like a request to parse this as json
 request({ url: url, json: true }, (error, response) => {
   // console.log(response.body.currently);
   console.log(
-    "The temperature outside is currently " +
+    response.body.daily.data[0].summary +
+      " The temperature outside is currently " +
       response.body.currently.temperature +
       " degrees out. There us a " +
       response.body.currently.precipProbability +
