@@ -7,19 +7,20 @@ const forecast = (latitude, longitude, callbackfunction) => {
     "," +
     longitude;
 
-  request({ url: url, json: true }, (error, response) => {
+  //short hand syntax used for url, and destructure response
+  request({ url, json: true }, (error, { body }) => {
     if (error) {
       callbackfunction("Unable to connect to weather service", undefined);
-    } else if (response.body.error) {
+    } else if (body.error) {
       callbackfunction("Unable to find location", undefined);
     } else {
       callbackfunction(
         undefined,
-        response.body.daily.data[0].summary +
+        body.daily.data[0].summary +
           " The temperature outside is currently " +
-          response.body.currently.temperature +
+          body.currently.temperature +
           " degrees out. There us a " +
-          response.body.currently.precipProbability +
+          body.currently.precipProbability +
           "% chance of rain."
       );
     }
