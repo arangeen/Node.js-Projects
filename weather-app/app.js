@@ -26,14 +26,3 @@ if (!address) {
 
 // this can show you why its argv[2] for address above
 console.log(process.argv);
-
-/**
- * Goal: Accept location via command line argument
- * ** example run:
- *          $ node app.js "New York" *****
- *
- *  1. access the command line argument without yargs
- *  2. use the string value as the input for geocode
- *  3. only geocode if a location was provided
- *  4. Test you work with a couple locations
- */
