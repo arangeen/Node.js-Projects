@@ -14,6 +14,21 @@ app.get("/help", (req, res) => {
   res.send("Help Page");
 });
 
+app.get("/about", (req, res) => {
+  res.send("About Page");
+});
+
+app.get("/weather", (req, res) => {
+  res.send("Weather Page");
+});
+
+/**
+ * Goal: Setup two new routes
+ *  1. Setup an about route and render a page title
+ *  2. weather route and render page title
+ *  3. test
+ */
+
 // now start the server up
 // port numeber 3000
 app.listen(3000, () => {
