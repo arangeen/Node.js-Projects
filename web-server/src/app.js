@@ -1,37 +1,17 @@
+// dont need to install it because it is a core module provided by nodejs
+const path = require("path");
+
 //load in express, configure it to serve something up and start server
 const express = require("express");
+
 const app = express();
 
-// req is short for request, res is short for response
-// sending back html data to the browser
-app.get("", (req, res) => {
-  res.send("<h1> Weather</h1>");
-});
+const publicDirectoryPath = path.join(__dirname, "../public");
+// a way to customize server to serve up the folder we want
+app.use(express.static(publicDirectoryPath));
 
-// send back json object
-app.get("/help", (req, res) => {
-  res.send([
-    {
-      name: "Ahmad",
-      age: 25
-    },
-    {
-      name: "Bemi",
-      age: 26
-    }
-  ]);
-});
-
-/**Goal: Updata routes
- *  1. Setup about route to render a title with html
- *  2. Setup a weather route to send back json
- *      - Object with forecast and location strings
- *  3. Test your work
- */
-
-app.get("/about", (req, res) => {
-  res.send("<h1>About</h1>");
-});
+//Goal: Create two more HtML  files
+//  - about page and help page
 
 app.get("/weather", (req, res) => {
   res.send({
