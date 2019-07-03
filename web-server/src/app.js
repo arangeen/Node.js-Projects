@@ -1,17 +1,19 @@
 // dont need to install it because it is a core module provided by nodejs
 const path = require("path");
-
 //load in express, configure it to serve something up and start server
 const express = require("express");
 
 const app = express();
 
+//Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, "../public");
+const viewsPath = path.join(__dirname, "../templates");
 
-// getting handlebars set up
+// Setting up handlebars engine and views location
 app.set("view engine", "hbs");
+app.set("views", viewsPath);
 
-// a way to customize server to serve up the folder we want
+// Setting up static directory to serve
 app.use(express.static(publicDirectoryPath));
 
 // setting up route to use index.hbs
@@ -29,12 +31,6 @@ app.get("/about", (req, res) => {
   });
 });
 
-/**
- * Goal: Create a template for help page
- *  1. setup a help template to render a help message to the screen
- *  2. Setup a help route and render the template with an example message
- *  3. Visit the route in the browser and see help message
- */
 app.get("/help", (req, res) => {
   res.render("help", {
     helpText: "This is some helpful text."
