@@ -3,15 +3,21 @@ const path = require("path");
 //load in express, configure it to serve something up and start server
 const express = require("express");
 
+// need this for partials
+const hbs = require("hbs");
+
 const app = express();
 
 //Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, "../public");
-const viewsPath = path.join(__dirname, "../templates");
+const viewsPath = path.join(__dirname, "../templates/views");
+
+const partialsPath = path.join(__dirname, "../templates/partials");
 
 // Setting up handlebars engine and views location
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
+hbs.registerPartials(partialsPath);
 
 // Setting up static directory to serve
 app.use(express.static(publicDirectoryPath));
@@ -33,7 +39,9 @@ app.get("/about", (req, res) => {
 
 app.get("/help", (req, res) => {
   res.render("help", {
-    helpText: "This is some helpful text."
+    helpText: "This is some helpful text.",
+    title: "Help",
+    name: "Ahmad Rangeen"
   });
 });
 
