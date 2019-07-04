@@ -3,14 +3,19 @@
 <html>
 
 <head>
+    <title>404</title>
+
+    <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="./css/styles.css" />
 </head>
 
 <body>
-    <!-- rendering a partial -->
-    {{>header}}
+    <div class="main-content">
+        <!-- rendering a partial -->
+        {{>header}}
 
-    <p>{{errorMessage}}</p>
+        <p>{{errorMessage}}</p>
+    </div>
 
     {{>footer}}
 </body>
