@@ -55,38 +55,27 @@ app.get("/weather", (req, res) => {
     });
   }
 
-  geocode(req.query.address, (error, { latitude, longitude, location }) => {
-    if (error) {
-      return res.send({ error });
-    }
-
-    forecast(latitude, longitude, (error, forecastData) => {
+  geocode(
+    req.query.address,
+    (error, { latitude, longitude, location } = {}) => {
       if (error) {
         return res.send({ error });
       }
 
-      res.send({
-        forecast: forecastData,
-        location,
-        address: req.query.address
+      forecast(latitude, longitude, (error, forecastData) => {
+        if (error) {
+          return res.send({ error });
+        }
+
+        res.send({
+          forecast: forecastData,
+          location,
+          address: req.query.address
+        });
       });
-    });
-  });
-
-  // res.send({
-  //   forecast: "It is sunny",
-  //   location: "California",
-  //   address: req.query.address
-  // });
+    }
+  );
 });
-
-/**
- * Goal: Wire up /weather
- *  1. Require geocode/forecast into app.js
- *  2. use address to geocode
- *  3. use the coordinates to get forecast
- *  4. Send back the real forecast and location
- */
 
 app.get("/products", (req, res) => {
   if (!req.query.search) {
