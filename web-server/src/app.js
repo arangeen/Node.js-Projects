@@ -46,9 +46,33 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
+  if (!req.query.address) {
+    return res.send({
+      error: "You must provide an address!"
+    });
+  }
+
   res.send({
     forecast: "It is sunny",
-    location: "California"
+    location: "California",
+    address: req.query.address
+  });
+});
+
+/**
+ * Goal: Update weather endpoint to accept address
+ */
+
+app.get("/products", (req, res) => {
+  if (!req.query.search) {
+    return res.send({
+      error: "You must provide a search term"
+    });
+  }
+  console.log(req.query.search);
+
+  res.send({
+    products: []
   });
 });
 
@@ -69,16 +93,6 @@ app.get("*", (req, res) => {
     errorMessage: "Page not found"
   });
 });
-
-/**
- * Goal: Create and render a 404 page with handlebars
- *  1. Setup the template to render the header and footer
- *  2. Setup the template to render an error message in a paragraph
- *  3. Render the template for both 404 routes
- *      - page not found.
- *      -help article not found.
- *  4. Test work. visit /what and /help/units
- */
 
 // now start the server up
 // port numeber 3000
