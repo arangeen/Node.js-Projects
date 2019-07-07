@@ -43,7 +43,7 @@ const product = {
 
 // creating a function that takes in that product obejct
 // destructuring label and stock
-const transaction = (type, { label, stock }) => {
+const transaction = (type, { label, stock = 0 } = {}) => {
   console.log(type, label, stock);
 };
 
